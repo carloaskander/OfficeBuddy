@@ -33,7 +33,7 @@ const NavBar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="#" className="text-2xl font-tech font-bold tracking-tight text-robot-blue-dark">
-              AI<span className="text-robot-blue-light">Kontor</span>
+              Office<span className="text-robot-blue-light">Buddy</span>
             </a>
           </div>
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const ContactSection = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    window.location.href = `mailto:Victoria.Askander@xlent.se?subject=${encodeURIComponent((document.getElementById('subject') as HTMLInputElement)?.value || '')}&body=${encodeURIComponent((document.getElementById('message') as HTMLTextAreaElement)?.value || '')}`;
+  };
+
   return (
     <section id="contact" className="section bg-gray-50">
       <div className="container-tight">
@@ -21,7 +25,7 @@ const ContactSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
@@ -44,7 +48,7 @@ const ContactSection = () => {
               </div>
               
               <div>
-                <Button className="btn-gradient w-full sm:w-auto">
+                <Button type="submit" className="btn-gradient w-full sm:w-auto">
                   Send Message
                   <Send className="ml-2 h-4 w-4" />
                 </Button>
@@ -56,9 +60,15 @@ const ContactSection = () => {
             <div className="bg-gradient-blue rounded-xl text-white p-6 md:p-8 shadow-lg mb-8">
               <h3 className="text-2xl font-semibold mb-6">Book a Demo</h3>
               <p className="mb-6">
-                Experience the power of AI Kontorsrobot firsthand with a personalized demonstration tailored to your organization's needs.
+                Experience the power of OfficeBuddy firsthand with a personalized demonstration tailored to your organization's needs.
               </p>
-              <Button variant="secondary" className="w-full">Schedule Now</Button>
+              <Button 
+                variant="secondary" 
+                className="w-full"
+                onClick={() => window.location.href = 'mailto:Victoria.Askander@xlent.se?subject=Demo Request - OfficeBuddy'}
+              >
+                Schedule Now
+              </Button>
             </div>
             
             <div className="space-y-6">
@@ -68,8 +78,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold">Email</h4>
-                  <a href="mailto:info@aikontor.com" className="text-robot-blue hover:underline">
-                    info@aikontor.com
+                  <a href="mailto:Victoria.Askander@xlent.se" className="text-robot-blue hover:underline">
+                    Victoria.Askander@xlent.se
                   </a>
                 </div>
               </div>
@@ -80,8 +90,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold">Phone</h4>
-                  <a href="tel:+46123456789" className="text-robot-blue hover:underline">
-                    +46 (0) 12 345 6789
+                  <a href="tel:+46730366779" className="text-robot-blue hover:underline">
+                    +46 73-036 67 79
                   </a>
                 </div>
               </div>
